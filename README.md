@@ -13,6 +13,7 @@ Populate example users, restaurants and lunch menues:
 * ./example.sh
 
 # GENERAL RULES:
+
 ## Every REST endpoint might return more descriptive exception:
 If HTTP Code 4XX or 5XX is returned - response body also contains the exception in JSON format:
 {"errorMessage":"XXXXXXX","errorClass":"java.fully.specified.Class"}
@@ -70,7 +71,9 @@ curl -v -X GET -b cookies.txt "${SERVER_URL}/restaurant/1/menu/2/giveVote"
 
 # GET VOTING RESULTS
 
-## Get voting results for today (returns top voted lunch menue's and their locations, can be more then one if same number of votes)
+## Get voting results for today
+Returns top voted lunch menue's and their locations, can be more then one if same number of votes
 curl -v -X GET -b cookies.txt "${SERVER_URL}/where2go"
-## Get only one result (if more then one available - then randomly select one!)
+## Get only ONE result
+(if more then one available - then randomly chooses one!)
 curl -v -X GET -b cookies.txt "${SERVER_URL}/where2go/one"
