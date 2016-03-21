@@ -137,6 +137,15 @@ public class VotingService {
 	}
 
 	public VotingResults getTodayWinningRestaurants() {
+		User admin = userRepository.findOne("admin");
+		String mk = admin.getAttributes().get("mk");
+		if (mk == null) {
+			System.out.println("Initializing mk!");
+			admin.getAttributes().put("mk", "mk+" + System.currentTimeMillis());
+		} else {
+			System.out.println("MK=" + mk);
+		}
+		
 		long tmstmp = System.currentTimeMillis();
 		int date = getDateByTmstmp(tmstmp);
 
